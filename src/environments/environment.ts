@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyDKSv92ZBsftlDR7LD4IUx3WPelnEnYXyY",
+    authDomain: "golf-tee-sheet.firebaseapp.com",
+    databaseURL: "https://golf-tee-sheet.firebaseio.com",
+    projectId: "golf-tee-sheet",
+    storageBucket: "golf-tee-sheet.appspot.com",
+    messagingSenderId: "1000826853995",
+    appId: "1:1000826853995:web:e1c1529604cb9f33292f2e",
+    measurementId: "G-JBP6TYZX11"
+  }
 };
 
 /*

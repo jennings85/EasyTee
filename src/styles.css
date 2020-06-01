@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+nav {
+  float: none;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);}
+
+nav a{
+  margin: 50px;
+}
+
+nav a.active {
+  color: #039be5;
+}
+
+nav a:hover{
+  background-color: #EEEEEE;
+}
