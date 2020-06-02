@@ -1,1 +1,19 @@
-<p>book-time works!</p>
+<h2> Welcome to the Tee Time Booking Portal. </h2>
+<p>Please select the date and time for your desired booking to view pricing and available spots. </p>
+
+<div>
+    Date: <input type="date" [(ngModel)]="date" placeholder="date"><br>
+    Holes: <select [(ngModel)]="hole">
+      <option>18 Holes</option>
+      <option>9 Holes</option>
+    </select><br>
+    Time: <select [(ngModel)]="time">
+      <option>Morning</option>
+      <option>Afternoon</option>
+    </select><br>
+    Your First Name: <input type="firstName" [(ngModel)]="firstName" placeholder="First Name"><br>
+    Your Last Name: <input type="lastName" [(ngModel)]="lastName" placeholder="Last Name"><br>
+    Your Phone Number: <input type="phone" [(ngModel)]="phone" placeholder="Phone #"><br>
+    Your Email: <input type="email" [(ngModel)]="email" placeholder="Email"><br>
+    <button (click)="submit()">Submit Tee Time</button>
+</div>

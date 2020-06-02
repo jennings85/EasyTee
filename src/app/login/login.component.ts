@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../shared/authentication.service';
 import { UserService } from 'src/app/user.service';
+import { TeetimeService } from 'src/app/teetime.service';
 import { User } from 'src/app/user.model';
+import { Teetime } from 'src/app/teetime.model';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +18,10 @@ export class LoginComponent implements OnInit {
   lastName: string;
   phoneNumber: string;
 
-
+  teetimes: Teetime[]
   users: User[];
-  constructor(private UserService: UserService, public authenticationService: AuthenticationService) { }
+
+  constructor(private UserService: UserService, private TeetimeService: TeetimeService, public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
       this.UserService.getUsers().subscribe(data => {
@@ -26,6 +29,14 @@ export class LoginComponent implements OnInit {
           return {
             id: e.payload.doc.id,
             ...e.payload.doc.data() as User}
+        })
+      });
+
+      this.TeetimeService.getTimes().subscribe(data => {
+        this.teetimes = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data() as Teetime}
         })
       });
     }
@@ -46,7 +57,6 @@ export class LoginComponent implements OnInit {
       rank: "user"
     }
     this.create(newUser);
-
     this.email = '';
     this.password = '';
   }

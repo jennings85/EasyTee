@@ -1,18 +1,21 @@
+<h3 *ngIf="(authenticationService.userData | async)"> Welcome back {{firstName}}</h3>
 <div *ngIf="!(authenticationService.userData | async)">
-    <input type="text" [(ngModel)]="username" placeholder="username">
-    <input type="text" [(ngModel)]="email" placeholder="email">
-    <input type="text" [(ngModel)]="firstName" placeholder="firstName">
-    <input type="text" [(ngModel)]="lastName" placeholder="lastName">
-    <input type="text" [(ngModel)]="phoneNumber" placeholder="phoneNumber">
-    <input type="password" [(ngModel)]="password" placeholder="password">
-
+    <input type="text" [(ngModel)]="username" placeholder="username"><br>
+    <input type="text" [(ngModel)]="email" placeholder="email"><br>
+    <input type="text" [(ngModel)]="firstName" placeholder="firstName"><br>
+    <input type="text" [(ngModel)]="lastName" placeholder="lastName"><br>
+    <input type="text" [(ngModel)]="phoneNumber" placeholder="phoneNumber"><br>
+    <input type="password" [(ngModel)]="password" placeholder="password"><br>
     <button (click)="signUp()">Sign Up</button>
-
     <button (click)="signIn()">Login</button>
 </div>
-
-<button (click)="signOut()" *ngIf="authenticationService.userData | async">Logout</button>
-
+<br>
+<br>
+<div *ngIf="!(authenticationService.userData | async)">
+    <input type="text" [(ngModel)]="email" placeholder="email"><br>
+    <input type="password" [(ngModel)]="password" placeholder="password"><br>
+    <button (click)="signIn()">Login</button>
+</div>
 
 <table *ngIf="authenticationService.userData | async">
   <thead>
@@ -32,3 +35,25 @@
     </tr>
   </tbody>
 </table>
+<br>
+<table *ngIf="authenticationService.userData | async">
+  <thead>
+    <th>Time</th>
+    <th>Name</th>
+    <th>Holes</th>
+    <th>Email</th>
+    <th>Paid</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let time of teetimes">
+      <td>{{time.time}}</td>
+      <td>{{time.firstName +" " + time.lastName}}</td>
+      <td>{{time.holes}}</td>
+      <td>{{time.email}}</td>
+      <td>{{time.paid}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<button (click)="signOut()" *ngIf="authenticationService.userData | async">Logout</button>
